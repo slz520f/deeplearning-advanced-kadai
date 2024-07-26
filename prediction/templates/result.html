@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>結果</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">画像分類結果</h1>
+        <div class="mb-3">
+            <img src="{{ image_url }}" alt="Uploaded Image" class="img-fluid"/>
+        </div>
+        <ul class="list-group">
+            {% for label, desc, prob in decoded_result %}
+            <li class="list-group-item">{{ desc }}: {{ prob|floatformat:2 }}</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'home' %}" class="btn btn-primary mt-3">もう一度試す</a>
+    </div>
+</body>
+</html>
